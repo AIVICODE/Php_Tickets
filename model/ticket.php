@@ -6,8 +6,8 @@ require_once "pos.php";
 class Ticket{
     private $id, $cantidad, $totalPago, $fechaCompra;
     private $pago; //el pos asociado
-    private $cli; //el cliente que comrpo las entradas
-    private $evento; //el evento en cuestion
+    private $cli; //el cliente que compró las entradas
+    private $evento; //el evento en cuestión
 
     public function getId() { return $this->id; }
     public function getCant() { return $this->cantidad; }

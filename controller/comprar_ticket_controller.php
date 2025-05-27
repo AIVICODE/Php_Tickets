@@ -1,8 +1,8 @@
 <?php
-require_once '../conection/sql.php';
+require_once __DIR__ . '/../conection/sql.php';
 session_start();
 if (!isset($_SESSION['usuario_id'])) {
-    header('Location: login.php');
+    header('Location: ../view/login.php');
     exit;
 }
 $conn = conectar();
@@ -13,6 +13,7 @@ $eventos = array();
 while ($row = mysqli_fetch_assoc($resEv)) {
     $eventos[] = $row;
 }
+$msg = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $evento_id = intval($_POST['evento_id']);
     $cantidad = intval($_POST['cantidad']);
@@ -35,36 +36,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 desconectar($conn);
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Comprar Ticket</title>
-</head>
-<body>
-    <h2>Comprar Ticket</h2>
-    <?php if (isset($msg)) echo '<p>' . htmlspecialchars($msg) . '</p>'; ?>
-    <form method="post">
-        <label>Evento:
-            <select name="evento_id" required>
-                <option value="">Seleccione un evento</option>
-                <?php foreach ($eventos as $ev): ?>
-                    <option value="<?php echo $ev['id']; ?>"><?php echo htmlspecialchars($ev['titulo']) . ' - ' . htmlspecialchars($ev['fecha']); ?></option>
-                <?php endforeach; ?>
-            </select>
-        </label><br>
-        <label>Cantidad de personas:
-            <input type="number" name="cantidad" min="1" required>
-        </label><br>
-        <label>Método de pago:
-            <select name="metodo_pago" required>
-                <option value="Tarjeta">Tarjeta</option>
-                <option value="Efectivo">Efectivo</option>
-            </select>
-        </label><br>
-        <button type="submit">Comprar</button>
-    </form>
-    <a href="dashboard.php">Volver al dashboard</a>
-</body>
-</html>

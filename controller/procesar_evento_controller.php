@@ -1,8 +1,8 @@
 <?php
-require_once '../conection/sql.php';
+require_once __DIR__ . '/../conection/sql.php';
 session_start();
 if (!isset($_SESSION['usuario_id'])) {
-    header('Location: login.php');
+    header('Location: ../view/login.php');
     exit;
 }
 $usuario_id = $_SESSION['usuario_id'];
@@ -10,8 +10,12 @@ $conn = conectar();
 $res = mysqli_query($conn, "SELECT * FROM Organizador WHERE id = $usuario_id");
 if (mysqli_num_rows($res) == 0) {
     desconectar($conn);
-    die('Acceso denegado.');
+    $mensaje = 'Acceso denegado.';
+    $exito = false;
+    return;
 }
+$mensaje = '';
+$exito = false;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titulo = mysqli_real_escape_string($conn, $_POST['titulo']);
     $descripcion = mysqli_real_escape_string($conn, $_POST['descripcion']);
@@ -30,18 +34,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             for ($i = 0; $i < $total; $i++) {
                 $tmp = $_FILES['imagenes']['tmp_name'][$i];
                 $name = basename($_FILES['imagenes']['name'][$i]);
-                $destino = '../../imagenes/' . $name;
+                $destino = __DIR__ . '/../../imagenes/' . $name;
                 if (move_uploaded_file($tmp, $destino)) {
                     $url = 'imagenes/' . $name;
                     mysqli_query($conn, "INSERT INTO EventoImagen (evento_id, url_imagen) VALUES ($evento_id, '$url')");
                 }
             }
         }
-        echo '<p>Evento creado correctamente.</p><a href="dashboard.php">Volver al Dashboard</a>';
+        $mensaje = 'Evento creado correctamente.';
+        $exito = true;
     } else {
-        echo '<p>Error al crear evento.</p><a href="crear_evento.php">Volver</a>';
+        $mensaje = 'Error al crear evento.';
+        $exito = false;
     }
 } else {
-    header('Location: crear_evento.php');
+    header('Location: ../view/crear_evento.php');
+    exit;
 }
 desconectar($conn);
