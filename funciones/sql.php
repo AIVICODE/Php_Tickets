@@ -1,8 +1,8 @@
 <?php
 function conectar(){
     $server = "localhost";
-    $user = "hphp";
-    $pass = "Php.2025#";
+    $user = "frank";
+    $pass = "1234";
     $db = "hphp_equipo6";
 	$conn = mysqli_connect($server, $user, $pass, $db);
     if (!$conn) {
