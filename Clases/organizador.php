@@ -1,5 +1,5 @@
 <?php
-include "usuario.php";
+require_once "usuario.php";
 include "eventos.php";
 
 class Organizador extends Usuario{
