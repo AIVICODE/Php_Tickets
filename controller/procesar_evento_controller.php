@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/../conection/sql.php';
+require_once __DIR__ . '/../model/organizador.php';
+require_once __DIR__ . '/../model/evento.php';
 session_start();
 if (!isset($_SESSION['usuario_id'])) {
     header('Location: ../view/login.php');
@@ -7,8 +9,7 @@ if (!isset($_SESSION['usuario_id'])) {
 }
 $usuario_id = $_SESSION['usuario_id'];
 $conn = conectar();
-$res = mysqli_query($conn, "SELECT * FROM Organizador WHERE id = $usuario_id");
-if (mysqli_num_rows($res) == 0) {
+if (!Organizador::esOrganizador($conn, $usuario_id)) {
     desconectar($conn);
     $mensaje = 'Acceso denegado.';
     $exito = false;
@@ -25,9 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $precio = floatval($_POST['precio']);
     $cupo = intval($_POST['cupo']);
     $estado = 'activo';
-    $sql = "INSERT INTO Evento (titulo, descripcion, fecha, lugar, precio, cupo, estado, organizador_id, categoria_id) VALUES ('$titulo', '$descripcion', '$fecha', '$lugar', $precio, $cupo, '$estado', $usuario_id, $categoria_id)";
-    if (mysqli_query($conn, $sql)) {
-        $evento_id = mysqli_insert_id($conn);
+    // Delegar a Evento
+    $evento = new Evento();
+    $res = $evento->crearEvento($conn, $titulo, $descripcion, $fecha, $lugar, $precio, $cupo, $estado, $usuario_id, $categoria_id);
+    if ($res['ok']) {
+        $evento_id = $res['evento_id'];
         // Guardar imágenes
         if (!empty($_FILES['imagenes']['name'][0])) {
             $total = count($_FILES['imagenes']['name']);

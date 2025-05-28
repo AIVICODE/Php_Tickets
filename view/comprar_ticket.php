@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 <?php
 require_once __DIR__ . '/../controller/comprar_ticket_controller.php';
 ?>
@@ -10,15 +12,10 @@ require_once __DIR__ . '/../controller/comprar_ticket_controller.php';
 <body>
     <h2>Comprar Ticket</h2>
     <?php if ($msg) echo '<p>' . htmlspecialchars($msg) . '</p>'; ?>
+    <?php if ($evento): ?>
     <form method="post">
-        <label>Evento:
-            <select name="evento_id" required>
-                <option value="">Seleccione un evento</option>
-                <?php foreach ($eventos as $ev): ?>
-                    <option value="<?php echo $ev['id']; ?>"><?php echo htmlspecialchars($ev['titulo']) . ' - ' . htmlspecialchars($ev['fecha']); ?></option>
-                <?php endforeach; ?>
-            </select>
-        </label><br>
+        <input type="hidden" name="evento_id" value="<?php echo is_object($evento) ? $evento->id : (isset($evento['id']) ? $evento['id'] : ''); ?>">
+        <p><strong>Evento:</strong> <?php echo is_object($evento) ? htmlspecialchars($evento->titulo) . ' - ' . htmlspecialchars($evento->fecha) : (isset($evento['titulo']) ? htmlspecialchars($evento['titulo']) . ' - ' . htmlspecialchars($evento['fecha']) : ''); ?></p>
         <label>Cantidad de personas:
             <input type="number" name="cantidad" min="1" required>
         </label><br>
@@ -30,6 +27,9 @@ require_once __DIR__ . '/../controller/comprar_ticket_controller.php';
         </label><br>
         <button type="submit">Comprar</button>
     </form>
+    <?php else: ?>
+        <p>No se encontró el evento o ya no está disponible.</p>
+    <?php endif; ?>
     <a href="dashboard.php">Volver al dashboard</a>
 </body>
 </html>
