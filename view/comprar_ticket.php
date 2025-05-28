@@ -17,7 +17,8 @@ require_once __DIR__ . '/../controller/comprar_ticket_controller.php';
         <input type="hidden" name="evento_id" value="<?php echo is_object($evento) ? $evento->id : (isset($evento['id']) ? $evento['id'] : ''); ?>">
         <p><strong>Evento:</strong> <?php echo is_object($evento) ? htmlspecialchars($evento->titulo) . ' - ' . htmlspecialchars($evento->fecha) : (isset($evento['titulo']) ? htmlspecialchars($evento['titulo']) . ' - ' . htmlspecialchars($evento['fecha']) : ''); ?></p>
         <label>Cantidad de personas:
-            <input type="number" name="cantidad" min="1" required>
+            <input type="number" name="cantidad" min="1" max='<?php $evento->getCupo(); ?>' required>
+            <?php echo "Solo quedan " . $evento->getCupo() . " entradas disponibles.";?>
         </label><br>
         <label>Método de pago:
             <select name="metodo_pago" required>
