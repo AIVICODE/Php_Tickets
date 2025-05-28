@@ -1,3 +1,6 @@
+DROP DATABASE IF EXISTS ticketera;
+CREATE DATABASE ticketera;
+USE ticketera;
 -- Tabla base
 CREATE TABLE Usuario (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -58,7 +61,7 @@ CREATE TABLE EventoImagen (
 
 -- Tabla de Pagos
 CREATE TABLE Pago (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     metodoPago VARCHAR(50),
     estado VARCHAR(20) CHECK (estado IN ('pendiente', 'completado', 'fallido')),
     fechaPago DATETIME,
@@ -67,7 +70,7 @@ CREATE TABLE Pago (
 
 -- Tabla de Tickets
 CREATE TABLE Ticket (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     cantidad INT NOT NULL,
     totalPago FLOAT NOT NULL,
     fechaCompra DATETIME NOT NULL,
