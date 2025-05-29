@@ -21,22 +21,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $evento) {
     $metodo_pago = $_POST['metodo_pago'];
     $cliente_id = $_SESSION['usuario_id'];
     $totalPago = $cantidad * floatval($evento->precio);
+    $cupo = $evento->getCupo();
 
-    // Usar el método del modelo Ticket
-    $ticket = new Ticket();
-    list($ok, $result) = $ticket->registrarCompra($conn, $cliente_id, $evento_id, $cantidad, $totalPago, $metodo_pago);
-    if ($ok) {
-        // Enviar email de confirmación
-        $resUser = mysqli_query($conn, "SELECT email FROM Usuario WHERE id = $cliente_id");
-        $rowUser = mysqli_fetch_assoc($resUser);
-        $email = $rowUser['email'];
-        $asunto = "Confirmación de compra de ticket";
-        $mensaje = "Su compra de $cantidad ticket(s) para el evento #$evento_id fue realizada con éxito.";
-        mail($email, $asunto, $mensaje);
-        $msg = "¡Compra realizada! Se ha enviado un email de confirmación.";
-    } else {
-        $msg = $result;
+    if($cupo>=$cantidad){
+        // Usar el método del modelo Ticket
+        $ticket = new Ticket();
+        list($ok, $result) = $ticket->registrarCompra($conn, $cliente_id, $evento_id, $cantidad, $totalPago, $metodo_pago);
+        if ($ok) {
+            // Enviar email de confirmación
+            $resUser = mysqli_query($conn, "SELECT email FROM Usuario WHERE id = $cliente_id");
+            $rowUser = mysqli_fetch_assoc($resUser);
+            $email = $rowUser['email'];
+            $asunto = "Confirmación de compra de ticket";
+            $mensaje = "Su compra de $cantidad ticket(s) para el evento #$evento_id fue realizada con éxito.";
+            mail($email, $asunto, $mensaje);
+            $msg = "¡Compra realizada! Se ha enviado un email de confirmación.";
+        } else {
+            $msg = $result;
+        }
     }
 }
 desconectar($conn);
 ?>
+

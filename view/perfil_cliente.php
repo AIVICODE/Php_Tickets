@@ -9,10 +9,10 @@ require_once __DIR__ . '/../controller/perfil_cliente_controller.php';
 </head>
 <body>
     <h2>Mi Perfil</h2>
-    <p><strong>Nombre:</strong> <?php echo htmlspecialchars($user['nombre']); ?></p>
-    <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
-    <?php if (!empty($user['imagen'])): ?>
-        <img src="<?php echo htmlspecialchars($user['imagen']); ?>" alt="Imagen de perfil" width="120" height="120">
+    <p><strong>Nombre:</strong> <?php echo htmlspecialchars($user ? $user->nombre : ''); ?></p>
+    <p><strong>Email:</strong> <?php echo htmlspecialchars($user ? $user->email : ''); ?></p>
+    <?php if (!empty($user->imagen)): ?>
+        <img src="<?php echo htmlspecialchars($user->imagen); ?>" alt="Imagen de perfil" width="120" height="120">
     <?php else: ?>
         <p>No hay imagen de perfil.</p>
     <?php endif; ?>
@@ -20,7 +20,7 @@ require_once __DIR__ . '/../controller/perfil_cliente_controller.php';
     <?php if (count($eventos) > 0): ?>
         <ul>
         <?php foreach ($eventos as $ev): ?>
-            <li><?php echo htmlspecialchars($ev['titulo']) . ' - ' . htmlspecialchars($ev['fecha']) . ' - ' . htmlspecialchars($ev['lugar']) . ' (Cantidad: ' . $ev['cantidad'] . ')'; ?></li>
+            <li><?php echo htmlspecialchars($ev->titulo) . ' - ' . htmlspecialchars($ev->fecha) . ' - ' . htmlspecialchars($ev->lugar) . ' (Cantidad: ' . $ev->cantidad . ')'; ?></li>
         <?php endforeach; ?>
         </ul>
     <?php else: ?>
