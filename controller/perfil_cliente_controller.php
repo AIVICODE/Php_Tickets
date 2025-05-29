@@ -9,6 +9,7 @@ if (!isset($_SESSION['usuario_id'])) {
     exit;
 }
 $conn = conectar();
+$usuario_id=$_SESSION['usuario_id'];
 list($user, $eventos) = Cliente::getInfoCliente($conn, $usuario_id);
 desconectar($conn);
 ?>
