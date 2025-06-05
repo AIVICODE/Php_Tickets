@@ -1,0 +1,82 @@
+body {
+    background: linear-gradient(135deg, #0074D9 0%, #7FDBFF 100%);
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(0,0,0,0.12);
+    max-width: 350px;
+    width: 100%;
+    text-align: center;
+    border: 3px solid #FFDC00;
+}
+
+h2 {
+    color: #0074D9;
+    margin-bottom: 1.5rem;
+}
+
+form label {
+    display: block;
+    margin-bottom: 1rem;
+    color: #001f3f;
+    font-weight: 500;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1.5px solid #0074D9;
+    border-radius: 6px;
+    margin-top: 0.3rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    background: #f8f8ff;
+    color: #001f3f;
+}
+
+button[type="submit"] {
+    background: #FFDC00;
+    color: #001f3f;
+    border: none;
+    border-radius: 6px;
+    padding: 0.7rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+    background: #ffe866;
+}
+
+a {
+    display: block;
+    margin-top: 1.2rem;
+    color: #0074D9;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #FFDC00;
+}
+
+p {
+    color: #ff4136;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}

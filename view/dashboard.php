@@ -6,18 +6,30 @@ if (!isset($_SESSION['usuario_id'])) {
     exit;
 }
 
-$categorias = obtenerCategoriasConEventos();
 $usuario_id = $_SESSION['usuario_id'];
 $esOrganizador = esOrganizador($usuario_id);
 $esCliente = esCliente($usuario_id);
+
+
+$buscar = isset($_GET['buscar_evento']) ? trim($_GET['buscar_evento']) : '';
+if ($buscar !== '') {
+    $categorias = buscarEventosPorTituloOCategoria($buscar);
+} else {
+    $categorias = obtenerCategoriasConEventos();
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <link rel="stylesheet" href="../stylesheets/dashboard/body.css">
 </head>
 <body>
+    <header>
+        <?php include __DIR__ . '/components/navbar.php'; ?>
+    </header>
     <h2>Dashboard: Categorías y Eventos</h2>
     <?php foreach ($categorias as $cat): ?>
         <h3>Categoría: <?php echo htmlspecialchars($cat->desc); ?></h3>
