@@ -1,9 +1,9 @@
 <?php
 function conectar(){
     $server = "localhost";
-    $user = "root";
+    $user = "frank";
     $pass = "1234";
-    $db = "ticketera";
+    $db = "hphp_equipo6";
 	$conn = mysqli_connect($server, $user, $pass, $db);
     if (!$conn) {
       die("Connection failed: " . mysqli_connect_error());

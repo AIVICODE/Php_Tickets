@@ -1,0 +1,1101 @@
+.sign-in {
+  background-color: #f5d14f;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.sign-in .div {
+  background-color: var(--mustard-yellow);
+  width: 1280px;
+  height: 832px;
+  position: relative;
+}
+
+.sign-in .sign-up-section {
+  position: absolute;
+  width: 640px;
+  height: 832px;
+  top: -1px;
+  left: 640px;
+  background-color: var(--broken-white);
+  border-radius: 50px 0px 0px 50px;
+  overflow: hidden;
+}
+
+.sign-in .text-wrapper {
+  position: absolute;
+  top: 19px;
+  left: 32px;
+  font-family: "Poppins-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--dark-blue-jeans);
+  font-size: 40px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.sign-in .text-field {
+  top: 353px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  position: absolute;
+  left: 80px;
+}
+
+.sign-in .text-field-2 {
+  display: flex;
+  width: 480px;
+  height: 52px;
+  align-items: center;
+  padding: 4px 16px;
+  position: relative;
+  background-color: var(--broken-white);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: var(--grey);
+}
+
+.sign-in .frame {
+  display: flex;
+  flex-direction: column;
+  height: 42px;
+  align-items: flex-start;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.sign-in .label {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: var(--12-reg-font-family);
+  font-weight: var(--12-reg-font-weight);
+  color: var(--grey);
+  font-size: var(--12-reg-font-size);
+  letter-spacing: var(--12-reg-letter-spacing);
+  line-height: var(--12-reg-line-height);
+  font-style: var(--12-reg-font-style);
+}
+
+.sign-in .input-text {
+  position: relative;
+  width: fit-content;
+  font-family: var(--16-reg-font-family);
+  font-weight: var(--16-reg-font-weight);
+  color: var(--grey);
+  font-size: var(--16-reg-font-size);
+  letter-spacing: var(--16-reg-letter-spacing);
+  line-height: var(--16-reg-line-height);
+  font-style: var(--16-reg-font-style);
+}
+
+.sign-in .text-field-3 {
+  top: 325px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  position: absolute;
+  left: 80px;
+}
+
+.sign-in .supporting-text {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: var(--12-reg-font-family);
+  font-weight: var(--12-reg-font-weight);
+  color: var(--dark-blue-jeans);
+  font-size: var(--12-reg-font-size);
+  letter-spacing: var(--12-reg-letter-spacing);
+  line-height: var(--12-reg-line-height);
+  font-style: var(--12-reg-font-style);
+}
+
+.sign-in .span {
+  font-family: var(--12-reg-font-family);
+  font-weight: var(--12-reg-font-weight);
+  color: #1f5673;
+  font-size: var(--12-reg-font-size);
+  letter-spacing: var(--12-reg-letter-spacing);
+  font-style: var(--12-reg-font-style);
+  line-height: var(--12-reg-line-height);
+}
+
+.sign-in .text-wrapper-2 {
+  text-decoration: underline;
+  font-family: var(--12-reg-font-family);
+  font-style: var(--12-reg-font-style);
+  font-weight: var(--12-reg-font-weight);
+  letter-spacing: var(--12-reg-letter-spacing);
+  line-height: var(--12-reg-line-height);
+  font-size: var(--12-reg-font-size);
+}
+
+.sign-in .text-field-4 {
+  top: 423px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  position: absolute;
+  left: 80px;
+}
+
+.sign-in .eye-icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.sign-in .supporting-text-2 {
+  position: relative;
+  width: fit-content;
+  font-family: var(--12-reg-font-family);
+  font-weight: var(--12-reg-font-weight);
+  color: var(--dark-blue-jeans);
+  font-size: var(--12-reg-font-size);
+  letter-spacing: var(--12-reg-letter-spacing);
+  line-height: var(--12-reg-line-height);
+  font-style: var(--12-reg-font-style);
+}
+
+.sign-in .div-wrapper {
+  display: flex;
+  width: 480px;
+  height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: absolute;
+  top: 537px;
+  left: 80px;
+  background-color: var(--dark-blue-jeans);
+  border-radius: 10px;
+}
+
+.sign-in .text-wrapper-3 {
+  position: relative;
+  width: fit-content;
+  font-family: var(--16-med-font-family);
+  font-weight: var(--16-med-font-weight);
+  color: var(--broken-white);
+  font-size: var(--16-med-font-size);
+  letter-spacing: var(--16-med-letter-spacing);
+  line-height: var(--16-med-line-height);
+  font-style: var(--16-med-font-style);
+}
+
+.sign-in .group {
+  position: absolute;
+  width: 427px;
+  height: 24px;
+  top: 613px;
+  left: 112px;
+}
+
+.sign-in .lock {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 0;
+  left: 0;
+  background-color: #909090;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.sign-in .img {
+  position: absolute;
+  width: 15px;
+  height: 16px;
+  top: 4px;
+  left: 5px;
+}
+
+.sign-in .p {
+  position: absolute;
+  top: 3px;
+  left: 37px;
+  font-family: var(--12-reg-font-family);
+  font-weight: var(--12-reg-font-weight);
+  color: #0e31e4;
+  font-size: var(--12-reg-font-size);
+  letter-spacing: var(--12-reg-letter-spacing);
+  line-height: var(--12-reg-line-height);
+  font-style: var(--12-reg-font-style);
+}
+
+.sign-in .web {
+  position: absolute;
+  width: 700px;
+  height: 312px;
+  top: -20px;
+  left: 361px;
+}
+
+.sign-in .overlap-group {
+  width: 277px;
+  height: 289px;
+  top: 21px;
+  position: absolute;
+  left: 2px;
+  background-image: url(./img/clip-path-group-6.png);
+  background-size: 100% 100%;
+}
+
+.sign-in .clip-path-group {
+  position: absolute;
+  width: 277px;
+  height: 289px;
+  top: 0;
+  left: 0;
+}
+
+.sign-in .clip-path-group-2 {
+  position: absolute;
+  width: 210px;
+  height: 188px;
+  top: 52px;
+  left: 64px;
+}
+
+.sign-in .vector {
+  position: absolute;
+  width: 16px;
+  height: 21px;
+  top: 128px;
+  left: 206px;
+}
+
+.sign-in .vector-2 {
+  position: absolute;
+  width: 16px;
+  height: 21px;
+  top: 101px;
+  left: 188px;
+}
+
+.sign-in .clip-path-group-3 {
+  position: absolute;
+  width: 109px;
+  height: 112px;
+  top: 27px;
+  left: 78px;
+}
+
+.sign-in .clip-path-group-4 {
+  position: absolute;
+  width: 42px;
+  height: 44px;
+  top: 161px;
+  left: 51px;
+}
+
+.sign-in .vector-3 {
+  position: absolute;
+  width: 16px;
+  height: 13px;
+  top: 76px;
+  left: 135px;
+}
+
+.sign-in .group-wrapper {
+  position: absolute;
+  width: 33px;
+  height: 44px;
+  top: 132px;
+  left: 331px;
+}
+
+.sign-in .img-wrapper {
+  position: relative;
+  height: 44px;
+}
+
+.sign-in .group-2 {
+  position: absolute;
+  width: 33px;
+  height: 44px;
+  top: 5406px;
+  left: 997px;
+}
+
+.sign-in .group-3 {
+  position: absolute;
+  width: 10px;
+  height: 46px;
+  top: 129px;
+  left: 369px;
+}
+
+.sign-in .group-4 {
+  position: relative;
+  height: 46px;
+}
+
+.sign-in .group-5 {
+  position: absolute;
+  width: 10px;
+  height: 46px;
+  top: 5406px;
+  left: 997px;
+}
+
+.sign-in .group-6 {
+  position: absolute;
+  width: 27px;
+  height: 35px;
+  top: 142px;
+  left: 386px;
+}
+
+.sign-in .group-7 {
+  position: relative;
+  height: 35px;
+}
+
+.sign-in .group-8 {
+  position: absolute;
+  width: 27px;
+  height: 35px;
+  top: 5406px;
+  left: 997px;
+}
+
+.sign-in .group-9 {
+  position: absolute;
+  width: 33px;
+  height: 46px;
+  top: 129px;
+  left: 419px;
+}
+
+.sign-in .group-10 {
+  position: absolute;
+  width: 33px;
+  height: 46px;
+  top: 5406px;
+  left: 997px;
+}
+
+.sign-in .group-11 {
+  position: absolute;
+  width: 31px;
+  height: 35px;
+  top: 142px;
+  left: 455px;
+}
+
+.sign-in .group-12 {
+  position: absolute;
+  width: 31px;
+  height: 35px;
+  top: 5406px;
+  left: 997px;
+}
+
+.sign-in .group-13 {
+  position: absolute;
+  width: 23px;
+  height: 41px;
+  top: 135px;
+  left: 490px;
+}
+
+.sign-in .group-14 {
+  position: relative;
+  height: 41px;
+}
+
+.sign-in .group-15 {
+  position: absolute;
+  width: 23px;
+  height: 41px;
+  top: 5406px;
+  left: 997px;
+}
+
+.sign-in .group-16 {
+  position: absolute;
+  width: 27px;
+  height: 44px;
+  top: 132px;
+  left: 521px;
+}
+
+.sign-in .group-17 {
+  position: absolute;
+  width: 27px;
+  height: 44px;
+  top: 5406px;
+  left: 997px;
+}
+
+.sign-in .group-18 {
+  position: absolute;
+  width: 30px;
+  height: 35px;
+  top: 142px;
+  left: 552px;
+}
+
+.sign-in .group-19 {
+  position: absolute;
+  width: 30px;
+  height: 35px;
+  top: 5406px;
+  left: 997px;
+}
+
+.sign-in .group-20 {
+  position: absolute;
+  width: 31px;
+  height: 34px;
+  top: 142px;
+  left: 591px;
+}
+
+.sign-in .group-21 {
+  position: relative;
+  height: 34px;
+}
+
+.sign-in .group-22 {
+  position: absolute;
+  width: 31px;
+  height: 34px;
+  top: 5406px;
+  left: 997px;
+}
+
+.sign-in .group-23 {
+  position: absolute;
+  width: 31px;
+  height: 47px;
+  top: 129px;
+  left: 629px;
+}
+
+.sign-in .group-24 {
+  position: relative;
+  height: 47px;
+}
+
+.sign-in .group-25 {
+  position: absolute;
+  width: 31px;
+  height: 47px;
+  top: 5406px;
+  left: 997px;
+}
+
+.sign-in .web-2 {
+  position: absolute;
+  width: 552px;
+  height: 246px;
+  top: 293px;
+  left: 72px;
+}
+
+.sign-in .overlap {
+  width: 244px;
+  height: 244px;
+  top: 0;
+  position: absolute;
+  left: 2px;
+  background-image: url(./img/clip-path-group-8.png);
+  background-size: 100% 100%;
+}
+
+.sign-in .clip-path-group-5 {
+  position: absolute;
+  width: 244px;
+  height: 244px;
+  top: 0;
+  left: 0;
+}
+
+.sign-in .clip-path-group-6 {
+  position: absolute;
+  width: 166px;
+  height: 148px;
+  top: 57px;
+  left: 50px;
+}
+
+.sign-in .vector-4 {
+  position: absolute;
+  width: 13px;
+  height: 16px;
+  top: 117px;
+  left: 162px;
+}
+
+.sign-in .vector-5 {
+  position: absolute;
+  width: 13px;
+  height: 16px;
+  top: 96px;
+  left: 148px;
+}
+
+.sign-in .clip-path-group-7 {
+  position: absolute;
+  width: 86px;
+  height: 88px;
+  top: 38px;
+  left: 62px;
+}
+
+.sign-in .clip-path-group-8 {
+  position: absolute;
+  width: 33px;
+  height: 35px;
+  top: 143px;
+  left: 40px;
+}
+
+.sign-in .vector-6 {
+  position: absolute;
+  width: 12px;
+  height: 10px;
+  top: 76px;
+  left: 107px;
+}
+
+.sign-in .group-26 {
+  position: absolute;
+  width: 26px;
+  height: 34px;
+  top: 104px;
+  left: 261px;
+  background-image: url(./img/group-18.png);
+  background-size: 100% 100%;
+}
+
+.sign-in .group-27 {
+  position: absolute;
+  width: 8px;
+  height: 37px;
+  top: 102px;
+  left: 291px;
+  background-image: url(./img/group-7.png);
+  background-size: 100% 100%;
+}
+
+.sign-in .group-28 {
+  position: absolute;
+  width: 21px;
+  height: 27px;
+  top: 112px;
+  left: 304px;
+  background-image: url(./img/group-3.png);
+  background-size: 100% 100%;
+}
+
+.sign-in .group-29 {
+  position: absolute;
+  width: 26px;
+  height: 37px;
+  top: 102px;
+  left: 331px;
+  background-image: url(./img/group.png);
+  background-size: 100% 100%;
+}
+
+.sign-in .group-30 {
+  position: absolute;
+  width: 24px;
+  height: 27px;
+  top: 112px;
+  left: 359px;
+  background-image: url(./img/group-12.png);
+  background-size: 100% 100%;
+}
+
+.sign-in .group-31 {
+  position: absolute;
+  width: 18px;
+  height: 32px;
+  top: 107px;
+  left: 386px;
+  background-image: url(./img/group-2.png);
+  background-size: 100% 100%;
+}
+
+.sign-in .group-32 {
+  position: absolute;
+  width: 21px;
+  height: 34px;
+  top: 104px;
+  left: 411px;
+  background-image: url(./img/group-10.png);
+  background-size: 100% 100%;
+}
+
+.sign-in .group-33 {
+  position: absolute;
+  width: 23px;
+  height: 27px;
+  top: 112px;
+  left: 435px;
+  background-image: url(./img/group-20.png);
+  background-size: 100% 100%;
+}
+
+.sign-in .group-34 {
+  position: absolute;
+  width: 24px;
+  height: 27px;
+  top: 112px;
+  left: 466px;
+  background-image: url(./img/group-4.png);
+  background-size: 100% 100%;
+}
+
+.sign-in .group-35 {
+  position: absolute;
+  width: 25px;
+  height: 37px;
+  top: 102px;
+  left: 496px;
+  background-image: url(./img/image.png);
+  background-size: 100% 100%;
+}
+
+.sign-up {
+  background-color: #f5d14f;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.sign-up .div {
+  background-color: var(--mustard-yellow);
+  width: 1280px;
+  height: 832px;
+  position: relative;
+}
+
+.sign-up .sign-up-section {
+  position: absolute;
+  width: 640px;
+  height: 832px;
+  top: -1px;
+  left: 640px;
+  background-color: var(--broken-white);
+  border-radius: 50px 0px 0px 50px;
+  overflow: hidden;
+}
+
+.sign-up .overlap {
+  position: absolute;
+  width: 608px;
+  height: 398px;
+  top: 1px;
+  left: 32px;
+}
+
+.sign-up .overlap-group {
+  position: absolute;
+  width: 560px;
+  height: 398px;
+  top: 0;
+  left: 48px;
+}
+
+.sign-up .frame {
+  position: absolute;
+  width: 304px;
+  height: 335px;
+  top: 0;
+  left: 256px;
+  object-fit: cover;
+}
+
+.sign-up .text-field {
+  display: inline-flex;
+  gap: 4px;
+  position: absolute;
+  top: 172px;
+  left: 0;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sign-up .text-field-2 {
+  display: flex;
+  width: 480px;
+  height: 52px;
+  align-items: center;
+  padding: 4px 16px;
+  position: relative;
+  background-color: var(--broken-white);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: var(--grey);
+}
+
+.sign-up .frame-2 {
+  display: flex;
+  flex-direction: column;
+  height: 42px;
+  align-items: flex-start;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.sign-up .label {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: var(--12-reg-font-family);
+  font-weight: var(--12-reg-font-weight);
+  color: var(--grey);
+  font-size: var(--12-reg-font-size);
+  letter-spacing: var(--12-reg-letter-spacing);
+  line-height: var(--12-reg-line-height);
+  font-style: var(--12-reg-font-style);
+}
+
+.sign-up .input-text {
+  position: relative;
+  width: fit-content;
+  font-family: var(--16-reg-font-family);
+  font-weight: var(--16-reg-font-weight);
+  color: var(--grey);
+  font-size: var(--16-reg-font-size);
+  letter-spacing: var(--16-reg-letter-spacing);
+  line-height: var(--16-reg-line-height);
+  font-style: var(--16-reg-font-style);
+}
+
+.sign-up .text-field-wrapper {
+  display: inline-flex;
+  gap: 4px;
+  position: absolute;
+  top: 248px;
+  left: 0;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sign-up .text-field-3 {
+  display: inline-flex;
+  gap: 4px;
+  position: absolute;
+  top: 324px;
+  left: 0;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sign-up .frame-wrapper {
+  display: flex;
+  width: 480px;
+  height: 52px;
+  justify-content: center;
+  padding: 4px 16px;
+  position: relative;
+  background-color: var(--broken-white);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: var(--grey);
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sign-up .frame-3 {
+  display: flex;
+  flex-direction: column;
+  height: 42px;
+  align-items: flex-start;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.sign-up .supporting-text {
+  position: relative;
+  width: fit-content;
+  font-family: var(--12-reg-font-family);
+  font-weight: var(--12-reg-font-weight);
+  color: var(--dark-blue-jeans);
+  font-size: var(--12-reg-font-size);
+  letter-spacing: var(--12-reg-letter-spacing);
+  line-height: var(--12-reg-line-height);
+  font-style: var(--12-reg-font-style);
+}
+
+.sign-up .text-wrapper {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  font-family: "Poppins-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--dark-blue-jeans);
+  font-size: 40px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.sign-up .text-field-4 {
+  display: inline-flex;
+  gap: 4px;
+  position: absolute;
+  top: 423px;
+  left: 80px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sign-up .eye-icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.sign-up .div-wrapper {
+  display: flex;
+  width: 480px;
+  height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: absolute;
+  top: 537px;
+  left: 80px;
+  background-color: var(--dark-blue-jeans);
+  border-radius: 10px;
+}
+
+.sign-up .text-wrapper-2 {
+  position: relative;
+  width: fit-content;
+  font-family: var(--16-med-font-family);
+  font-weight: var(--16-med-font-weight);
+  color: var(--broken-white);
+  font-size: var(--16-med-font-size);
+  letter-spacing: var(--16-med-letter-spacing);
+  line-height: var(--16-med-line-height);
+  font-style: var(--16-med-font-style);
+}
+
+.sign-up .group {
+  position: absolute;
+  width: 427px;
+  height: 24px;
+  top: 613px;
+  left: 112px;
+}
+
+.sign-up .lock {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 0;
+  left: 0;
+  background-color: #909090;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.sign-up .img {
+  position: absolute;
+  width: 15px;
+  height: 16px;
+  top: 4px;
+  left: 5px;
+}
+
+.sign-up .p {
+  position: absolute;
+  top: 3px;
+  left: 37px;
+  font-family: var(--12-reg-font-family);
+  font-weight: var(--12-reg-font-weight);
+  color: #0e31e4;
+  font-size: var(--12-reg-font-size);
+  letter-spacing: var(--12-reg-letter-spacing);
+  line-height: var(--12-reg-line-height);
+  font-style: var(--12-reg-font-style);
+}
+
+.sign-up .web {
+  position: absolute;
+  width: 552px;
+  height: 246px;
+  top: 293px;
+  left: 72px;
+}
+
+.sign-up .overlap-2 {
+  position: absolute;
+  width: 244px;
+  height: 244px;
+  top: 0;
+  left: 2px;
+  background-image: url(./img/clip-path-group-2.png);
+  background-size: 100% 100%;
+}
+
+.sign-up .clip-path-group {
+  position: absolute;
+  width: 166px;
+  height: 148px;
+  top: 57px;
+  left: 50px;
+}
+
+.sign-up .vector {
+  position: absolute;
+  width: 13px;
+  height: 16px;
+  top: 117px;
+  left: 162px;
+}
+
+.sign-up .vector-2 {
+  position: absolute;
+  width: 13px;
+  height: 16px;
+  top: 96px;
+  left: 148px;
+}
+
+.sign-up .clip-path-group-2 {
+  position: absolute;
+  width: 86px;
+  height: 88px;
+  top: 38px;
+  left: 62px;
+}
+
+.sign-up .clip-path-group-3 {
+  position: absolute;
+  width: 33px;
+  height: 35px;
+  top: 143px;
+  left: 40px;
+}
+
+.sign-up .vector-3 {
+  position: absolute;
+  width: 12px;
+  height: 10px;
+  top: 76px;
+  left: 107px;
+}
+
+.sign-up .group-2 {
+  position: absolute;
+  width: 26px;
+  height: 34px;
+  top: 104px;
+  left: 261px;
+  background-image: url(./img/group-4.png);
+  background-size: 100% 100%;
+}
+
+.sign-up .group-3 {
+  position: absolute;
+  width: 8px;
+  height: 37px;
+  top: 102px;
+  left: 291px;
+  background-image: url(./img/image.png);
+  background-size: 100% 100%;
+}
+
+.sign-up .group-4 {
+  position: absolute;
+  width: 21px;
+  height: 27px;
+  top: 112px;
+  left: 304px;
+  background-image: url(./img/group-9.png);
+  background-size: 100% 100%;
+}
+
+.sign-up .group-5 {
+  position: absolute;
+  width: 26px;
+  height: 37px;
+  top: 102px;
+  left: 331px;
+  background-image: url(./img/group-2.png);
+  background-size: 100% 100%;
+}
+
+.sign-up .group-6 {
+  position: absolute;
+  width: 24px;
+  height: 27px;
+  top: 112px;
+  left: 359px;
+  background-image: url(./img/group-7.png);
+  background-size: 100% 100%;
+}
+
+.sign-up .group-7 {
+  position: absolute;
+  width: 18px;
+  height: 32px;
+  top: 107px;
+  left: 386px;
+  background-image: url(./img/group-8.png);
+  background-size: 100% 100%;
+}
+
+.sign-up .group-8 {
+  position: absolute;
+  width: 21px;
+  height: 34px;
+  top: 104px;
+  left: 411px;
+  background-image: url(./img/group-3.png);
+  background-size: 100% 100%;
+}
+
+.sign-up .group-9 {
+  position: absolute;
+  width: 23px;
+  height: 27px;
+  top: 112px;
+  left: 435px;
+  background-image: url(./img/group-6.png);
+  background-size: 100% 100%;
+}
+
+.sign-up .group-10 {
+  position: absolute;
+  width: 24px;
+  height: 27px;
+  top: 112px;
+  left: 466px;
+  background-image: url(./img/group-5.png);
+  background-size: 100% 100%;
+}
+
+.sign-up .group-11 {
+  position: absolute;
+  width: 25px;
+  height: 37px;
+  top: 102px;
+  left: 496px;
+  background-image: url(./img/group.png);
+  background-size: 100% 100%;
+}
