@@ -17,7 +17,7 @@ function desconectar($conn){
 }
 
 function modifico($conn, $sql){
-	$resultado = mysqli_query($conn,$sql) or die ("Error al modificar el contenido dela base de datos");
+	$resultado = mysqli_query($conn,$sql) or die ("Error al modificar el contenido de la base de datos");
 }
 
 function buscar($conn, $sql){
