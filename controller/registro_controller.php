@@ -33,11 +33,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             $mensaje = 'Registro exitoso. Ahora puedes iniciar sesión.';
             $exito = true;
+            header("location: ../view/registro_completado.html");
         } else {
             $mensaje = 'Error al registrar usuario.';
         }
     }
     desconectar($conn);
-    header("location: ../view/registro_completado.html");
 }
 ?>
