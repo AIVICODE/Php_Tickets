@@ -38,5 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
     desconectar($conn);
+    header("location: ../view/registro_completado.html");
 }
 ?>
