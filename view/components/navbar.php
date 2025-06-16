@@ -4,7 +4,7 @@
 <nav class="navbar">
     <div class="navbar-content">
         <div class="top-bar">
-            <img src="../stylesheets/images/icon.svg" alt="Ticketera Logo" class="logo-img" />
+            <a href="dashboard.php"><img src="../stylesheets/images/icon.svg" alt="Ticketera Logo" class="logo-img" /></a>
             <div class="search-container">
                 <form action="dashboard.php" method="get">
                     <span class="search-icon" aria-label="Buscar"></span>
@@ -17,7 +17,7 @@
         </div>
         <div class="actions">
             <a href="login.php">Iniciar sesión</a>
-            <a href="perfil_cliente.php">Mi perfil</a>
+            <a href="perfil_cliente.php">Mis tickets</a>
         </div>
     </div>
 </nav>

@@ -50,8 +50,7 @@ if ($buscar !== '') {
             <p>No hay eventos para esta categoría.</p>
         <?php endif; ?>
     <?php endforeach; ?>
-    <a href="../controller/logout_controller.php">Cerrar sesión</a>
-    <a href="../view/perfil_cliente.php">Mi perfil</a>
+    
     <?php if ($esOrganizador): ?>
         <a href="../view/crear_evento.php">Crear nuevo evento</a>
     <?php endif; ?>

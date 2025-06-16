@@ -22,6 +22,7 @@ class Evento{
         $res = mysqli_query($conn, "SELECT * FROM Organizador WHERE id = $usuario_id");
         return mysqli_num_rows($res) > 0;
     }
+
     public static function obtenerCategorias($conn) {
         $categorias = array();
         $resCat = mysqli_query($conn, 'SELECT * FROM Categoria');
@@ -30,6 +31,7 @@ class Evento{
         }
         return $categorias;
     }
+    
     public static function getEventoDisponible($conn, $evento_id) {
         $resEv = mysqli_query($conn, "SELECT * FROM Evento WHERE id = $evento_id AND fecha > NOW()");
         if ($rowEv = mysqli_fetch_assoc($resEv)) {
@@ -45,8 +47,7 @@ class Evento{
             return $evento;
         }
         return null;
-    }
-    public function crearEvento($conn, $titulo, $descripcion, $fecha, $lugar, $precio, $cupo, $estado, $organizador_id, $categoria_id) {
+    }    public function crearEvento($conn, $titulo, $descripcion, $fecha, $lugar, $precio, $cupo, $estado, $organizador_id, $categoria_id) {
         $sql = "INSERT INTO Evento (titulo, descripcion, fecha, lugar, precio, cupo, estado, organizador_id, categoria_id) VALUES ('$titulo', '$descripcion', '$fecha', '$lugar', $precio, $cupo, '$estado', $organizador_id, $categoria_id)";
         if (mysqli_query($conn, $sql)) {
             $evento_id = mysqli_insert_id($conn);
@@ -54,6 +55,47 @@ class Evento{
         } else {
             return ['ok' => false];
         }
+    }
+
+    public static function buscarEventos($conn, $buscar) {
+        $buscar = mysqli_real_escape_string($conn, $buscar);
+        $eventos = array();
+        
+        // Consulta para eventos que coincidan con el texto de búsqueda
+        $query = "SELECT e.*, c.id as cat_id, c.descripcion as cat_desc 
+                 FROM Evento e 
+                 JOIN Categoria c ON e.categoria_id = c.id 
+                 WHERE e.titulo LIKE '%$buscar%' OR e.descripcion LIKE '%$buscar%'";
+                 
+        $resultado = mysqli_query($conn, $query);
+          while ($row = mysqli_fetch_assoc($resultado)) {
+            // Crear objeto evento
+            $evento = self::crearDesdeFilaBD($row);
+            
+            // Añadir la información de la categoría como propiedad
+            $evento->categoriaId = $row['cat_id'];
+            $evento->categoriaDesc = $row['cat_desc'];
+            
+            $eventos[] = $evento;
+        }
+        
+        return $eventos;
+    }
+    
+    public static function crearDesdeFilaBD($row) {
+        $evento = new Evento();
+        $evento->id = $row['id'];
+        $evento->titulo = $row['titulo'];
+        $evento->desc = $row['descripcion'];
+        $evento->fecha = $row['fecha'];
+        $evento->lugar = $row['lugar'];
+        
+        // Asignar otros campos si están disponibles
+        if (isset($row['precio'])) $evento->precio = $row['precio'];
+        if (isset($row['cupo'])) $evento->cupo = $row['cupo'];
+        if (isset($row['estado'])) $evento->estado = $row['estado'];
+        
+        return $evento;
     }
 }
 ?>

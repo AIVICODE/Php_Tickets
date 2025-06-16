@@ -8,6 +8,10 @@ require_once __DIR__ . '/../controller/crear_evento_controller.php';
     <title>Crear Evento</title>
 </head>
 <body>
+    <header>
+        <?php include __DIR__ . '/components/navbar.php'; ?>
+    </header>
+
     <h2>Crear Nuevo Evento</h2>
     <form method="post" action="procesar_evento.php" enctype="multipart/form-data">
         <label>Título: <input type="text" name="titulo" required></label><br>

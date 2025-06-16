@@ -8,8 +8,15 @@ require_once __DIR__ . '/../controller/comprar_ticket_controller.php';
 <head>
     <meta charset="UTF-8">
     <title>Comprar Ticket</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../stylesheets/dashboard/body.css">
+</head>
 </head>
 <body>
+    <header>
+        <?php include __DIR__ . '/components/navbar.php'; ?>
+    </header>
+
     <h2>Comprar Ticket</h2>
     <?php if ($msg) echo '<p>' . htmlspecialchars($msg) . '</p>'; ?>
     <?php if ($evento): ?>

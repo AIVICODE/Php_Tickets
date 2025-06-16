@@ -29,58 +29,69 @@ function esCliente($usuario_id) {
 function buscarEventosPorTituloOCategoria($buscar) {
     $conn = conectar();
     $categorias = array();
-    $buscar = mysqli_real_escape_string($conn, $buscar);
-    // Buscar categorías que coincidan con el texto
-    $resCat = mysqli_query($conn, "SELECT * FROM Categoria WHERE descripcion LIKE '%$buscar%'");
-    while ($row = mysqli_fetch_assoc($resCat)) {
-        $cat = new Categoria();
-        $cat->id = $row['id'];
-        $cat->desc = $row['descripcion'];
-        $cat->eventos = array();
-        // Buscar eventos de esta categoría que coincidan con el texto
-        $resEv = mysqli_query($conn, "SELECT * FROM Evento WHERE categoria_id = " . intval($row['id']) . " AND (titulo LIKE '%$buscar%' OR descripcion LIKE '%$buscar%')");
+    $catIdsIncluidos = array();
+    
+    // PASO 1: Obtener categorías que coincidan con la búsqueda
+    $categoriasBuscadas = Categoria::buscarPorTexto($conn, $buscar);
+    
+    // Para cada categoría encontrada, cargar sus eventos
+    foreach ($categoriasBuscadas as $cat) {
+        $catIdsIncluidos[] = $cat->id;
+        
+        // Cargar eventos para esta categoría
+        $resEv = mysqli_query($conn, "SELECT * FROM Evento WHERE categoria_id = " . intval($cat->id));
         while ($rowEv = mysqli_fetch_assoc($resEv)) {
-            $ev = new Evento();
-            $ev->id = $rowEv['id'];
-            $ev->titulo = $rowEv['titulo'];
-            $ev->desc = $rowEv['descripcion'];
-            $ev->fecha = $rowEv['fecha'];
-            $ev->lugar = $rowEv['lugar'];
+            $ev = Evento::crearDesdeFilaBD($rowEv);
             $cat->eventos[] = $ev;
         }
+        
         $categorias[] = $cat;
     }
-    // También buscar eventos que coincidan pero cuya categoría no coincida
-    $resEv = mysqli_query($conn, "SELECT * FROM Evento WHERE (titulo LIKE '%$buscar%' OR descripcion LIKE '%$buscar%')");
-    $catIdsIncluidos = array_map(function($c) { return $c->id; }, $categorias);
-    while ($rowEv = mysqli_fetch_assoc($resEv)) {
-        $catId = $rowEv['categoria_id'];
-        if (!in_array($catId, $catIdsIncluidos)) {
-            // Obtener la categoría
-            $resCat2 = mysqli_query($conn, "SELECT * FROM Categoria WHERE id = $catId");
-            if ($rowCat2 = mysqli_fetch_assoc($resCat2)) {
-                $cat = new Categoria();
-                $cat->id = $rowCat2['id'];
-                $cat->desc = $rowCat2['descripcion'];
-                $cat->eventos = array();
-                $categorias[] = $cat;
-                $catIdsIncluidos[] = $catId;
-            }
+    
+    // PASO 2: Buscar eventos por título o descripción usando el modelo Evento
+    $eventosBuscados = Evento::buscarEventos($conn, $buscar);
+    
+    // Obtener IDs de eventos ya incluidos para evitar duplicados
+    $eventosIncluidos = array();
+    foreach ($categorias as $cat) {
+        foreach ($cat->eventos as $ev) {
+            $eventosIncluidos[] = $ev->id;
         }
-        // Agregar el evento a la categoría correspondiente
-        foreach ($categorias as $cat) {
-            if ($cat->id == $catId) {
-                $ev = new Evento();
-                $ev->id = $rowEv['id'];
-                $ev->titulo = $rowEv['titulo'];
-                $ev->desc = $rowEv['descripcion'];
-                $ev->fecha = $rowEv['fecha'];
-                $ev->lugar = $rowEv['lugar'];
-                $cat->eventos[] = $ev;
+    }
+    
+    // Agrupar los eventos encontrados por categoría
+    foreach ($eventosBuscados as $evento) {
+        // Evitar duplicados
+        if (in_array($evento->id, $eventosIncluidos)) {
+            continue;
+        }
+        
+        $categoriaId = $evento->categoriaId;
+        
+        // Verificar si ya tenemos esta categoría
+        $categoriaExistente = false;
+        foreach ($categorias as $index => $cat) {
+            if ($cat->id == $categoriaId) {
+                // Añadir este evento a la categoría existente
+                $categorias[$index]->eventos[] = $evento;
+                $eventosIncluidos[] = $evento->id;
+                $categoriaExistente = true;
                 break;
             }
         }
+        
+        // Si la categoría no existe, crearla con este evento
+        if (!$categoriaExistente) {
+            $cat = new Categoria();
+            $cat->id = $categoriaId;
+            $cat->desc = $evento->categoriaDesc;
+            $cat->eventos = array($evento);
+            $categorias[] = $cat;
+            $catIdsIncluidos[] = $categoriaId;
+            $eventosIncluidos[] = $evento->id;
+        }
     }
+    
     desconectar($conn);
     return $categorias;
 }

@@ -6,8 +6,14 @@ require_once __DIR__ . '/../controller/perfil_cliente_controller.php';
 <head>
     <meta charset="UTF-8">
     <title>Mi Perfil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../stylesheets/dashboard/body.css">
 </head>
 <body>
+    <header>
+        <?php include __DIR__ . '/components/navbar.php'; ?>
+    </header>
+
     <h2>Mi Perfil</h2>
     <p><strong>Nombre:</strong> <?php echo htmlspecialchars($user ? $user->nombre : ''); ?></p>
     <p><strong>Email:</strong> <?php echo htmlspecialchars($user ? $user->email : ''); ?></p>
