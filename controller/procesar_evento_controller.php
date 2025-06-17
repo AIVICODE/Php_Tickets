@@ -32,18 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($res['ok']) {
         $evento_id = $res['evento_id'];
         // Guardar imágenes
-        if (!empty($_FILES['imagenes']['name'][0])) {
-            $total = count($_FILES['imagenes']['name']);
-            for ($i = 0; $i < $total; $i++) {
-                $tmp = $_FILES['imagenes']['tmp_name'][$i];
-                $name = basename($_FILES['imagenes']['name'][$i]);
-                $destino = __DIR__ . '/../../imagenes/' . $name;
-                if (move_uploaded_file($tmp, $destino)) {
-                    $url = 'imagenes/' . $name;
-                    mysqli_query($conn, "INSERT INTO EventoImagen (evento_id, url_imagen) VALUES ($evento_id, '$url')");
-                }
-            }
-        }
+        $uploaddir = "../images/";
+        $uploadfile = $uploaddir . basename($_FILES['img']['name']); // aqui esta el nombre de la imagen
+        move_uploaded_file($_FILES['img']['tmp_name'], $uploadfile);
+        $sql= "INSERT INTO eventoimagen (evento_id, url_imagen) VALUES ($evento_id, '$uploadfile')";
+        modifico($conn,$sql);
         $mensaje = 'Evento creado correctamente.';
         $exito = true;
     } else {
