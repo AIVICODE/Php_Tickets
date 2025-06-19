@@ -20,14 +20,16 @@ if ($buscar !== '') {
 ?>
 <!DOCTYPE html>
 <html lang="es">
-<head>    <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="../stylesheets/dashboard/body.css?v=<?php echo time(); ?>">
     <script src="../stylesheets/js/category-slider.js?v=<?php echo time(); ?>"></script>
 </head>
 
-<body>    <header>
+<body>
+    <header>
         <?php include __DIR__ . '/components/navbar.php'; ?>
     </header>
     
@@ -46,7 +48,8 @@ if ($buscar !== '') {
                 </div>
             <?php endforeach; ?>
         </div>
-          <button class="scroll-btn scroll-right" id="scrollRight" aria-label="Desplazar a la derecha">
+        
+        <button class="scroll-btn scroll-right" id="scrollRight" aria-label="Desplazar a la derecha">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
@@ -90,9 +93,11 @@ if ($buscar !== '') {
                     <p>No hay eventos para esta categoría.</p>
                 <?php endif; ?>
             </div>
-        <?php endforeach; ?>    </div>
+        <?php endforeach; ?>
+    </div>
     
     <?php if ($esOrganizador): ?>
-        <a href="../view/crear_evento.php" class="create-event-btn">Crear nuevo evento</a>    <?php endif; ?>
+        <a href="../view/crear_evento.php" class="create-event-btn">Crear nuevo evento</a>
+    <?php endif; ?>
 </body>
 </html>

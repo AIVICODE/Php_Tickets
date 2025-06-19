@@ -14,10 +14,18 @@
                     <span class="hamburger-icon"></span>
                 </button>
             </div>
-        </div>
-        <div class="actions">
-            <a href="login.php">Iniciar sesión</a>
-            <a href="perfil_cliente.php">Mis tickets</a>
+        </div>        <div class="actions">
+            <?php if (isset($_SESSION['usuario_id'])): ?>
+                <span class="welcome-message">Bienvenido, <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?>!</span>
+                <a href="perfil_cliente.php" class="profile-link">
+                    <img src="../stylesheets/images/profile.svg" alt="Perfil" class="profile-icon">
+                    Mi Perfil
+                </a>
+                <a href="dashboard.php">Mis tickets</a>
+            <?php else: ?>
+                <a href="login.php">Iniciar sesión</a>
+                <a href="registro.php">Registrarse</a>
+            <?php endif; ?>
         </div>
     </div>
 </nav>
