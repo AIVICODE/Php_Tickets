@@ -1,12 +1,10 @@
 :root {
-    --navbar-bg: #F5D250;
-    --navbar-logo: #1F5673;
-    --navbar-text: #1F5673;
-    --navbar-input-bg: #F8F7F3;
-    --navbar-input-text: #1F5673;
-    --navbar-button-bg: #1F5673;
-    --navbar-button-text: #F8F7F3;
-    --navbar-button-hover-bg: #F5D250;
-    --gray: #D9D9D9;
-    --white--navbar-background: #F8F7F3;
+    --yellow: #F5D250;
+    --dark-blue: #1F5673;
+    --broken-white: #F8F7F3;
+    --black:#232323;
+    --white: #F8F7F3;
+    --red:#E02828;
+    --blue:#53B3CB;
+    --gray:#D9D9D9;
 }
