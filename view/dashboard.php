@@ -20,10 +20,14 @@ if ($buscar !== '') {
 ?>
 <!DOCTYPE html>
 <html lang="es">
-<head>    <meta charset="UTF-8">
+<head>    
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Dashboard</title>    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../stylesheets/variables.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../stylesheets/dashboard/body.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../stylesheets/dashboard/events.css?v=<?php echo time(); ?>">
+    <link rel="icon" type="image/png" href="../stylesheets/images/favicon.png">
     <script src="../stylesheets/js/category-slider.js?v=<?php echo time(); ?>"></script>
 </head>
 
@@ -55,44 +59,107 @@ if ($buscar !== '') {
     
     <!-- Indicador visual de scroll -->
     <div class="scroll-indicator" id="scrollIndicator"></div>
-    
-    <div class="events-section">
+      <div class="events-section">
         <?php foreach ($categorias as $cat): ?>            
             <div class="category-events" id="cat-<?php echo $cat->id; ?>">
-                <h3>Categoría: <?php echo htmlspecialchars($cat->desc); ?></h3>                <?php if (count($cat->eventos) > 0): ?>
-                    <ul>
+                <h3 class="category-title">Categoría: <?php echo htmlspecialchars($cat->desc); ?></h3>                
+                <?php if (count($cat->eventos) > 0): ?>
+                    <div class="eventos-grid">
                     <?php foreach ($cat->eventos as $ev): ?>
-                        <li>
-                            <div class="evento-info">
-                                <strong><?php echo htmlspecialchars($ev->titulo); ?></strong>
-                                <div class="evento-detalles">
-                                    <span><?php echo htmlspecialchars($ev->fecha); ?></span>
-                                    <span><?php echo htmlspecialchars($ev->lugar); ?></span>
+                        <?php 
+                            $isActive = strtotime($ev->fecha) > time();
+                            $statusClass = $isActive ? 'active' : 'expired';
+                            $statusIcon = $isActive ? 'bi-calendar-check' : 'bi-calendar-x';
+                            
+                            // Formatear la fecha del evento
+                            $fechaEvento = date('d/m/Y H:i', strtotime($ev->fecha));
+                        ?>
+                        <div class="evento-card">
+                            <div class="evento-header">
+                                <h3><?php echo htmlspecialchars($ev->titulo); ?></h3>
+                                <div class="evento-status <?php echo $statusClass; ?>">
+                                    <i class="bi <?php echo $statusIcon; ?>"></i>
                                 </div>
-                                <?php if(!empty($ev->desc)): ?>
-                                    <p class="evento-descripcion"><?php echo htmlspecialchars($ev->desc); ?></p>
+                            </div>
+                              <div class="evento-body">                                <div class="evento-image">
+                                    <?php 
+                                    if (!empty($ev->imagen_url)) {
+                                        // Corregir la ruta de la imagen si es necesario
+                                        $imgPath = $ev->imagen_url;
+                                        // Si la ruta comienza con "/", aseguramos que sea relativa a la raíz del sitio
+                                        if (strpos($imgPath, '/') === 0) {
+                                            $imgPath = '..' . $imgPath;
+                                        }
+                                        ?>
+                                        <img src="<?php echo htmlspecialchars($imgPath); ?>" alt="Imagen del evento" class="evento-img">
+                                    <?php
+                                    } else {
+                                        // No hay imagen, mostrar un placeholder
+                                        ?>
+                                        <div class="evento-img-placeholder">
+                                            <i class="bi bi-image"></i>
+                                            <span><?php echo htmlspecialchars($ev->titulo); ?></span>
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                                <div class="evento-info">
+                                    <div class="evento-info-row">
+                                        <div class="evento-info-label">Fecha:</div>
+                                        <div class="evento-info-value"><?php echo $fechaEvento; ?></div>
+                                    </div>
+                                    <div class="evento-info-row">
+                                        <div class="evento-info-label">Lugar:</div>
+                                        <div class="evento-info-value"><?php echo htmlspecialchars($ev->lugar); ?></div>
+                                    </div>
+                                    <?php if(!empty($ev->desc)): ?>
+                                    <div class="evento-info-row">
+                                        <div class="evento-info-label">Descripción:</div>
+                                        <div class="evento-info-value"><?php echo htmlspecialchars($ev->desc); ?></div>
+                                    </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            
+                            <div class="evento-footer">
+                                <?php if (strtotime($ev->fecha) > time() && $esCliente): ?>
+                                    <form action="comprar_ticket.php" method="get">
+                                        <input type="hidden" name="evento_id" value="<?php echo $ev->id; ?>">
+                                        <button type="submit" class="comprar-btn">Comprar tickets</button>
+                                    </form>
+                                <?php elseif (strtotime($ev->fecha) <= time()): ?>
+                                    <div class="evento-finalizado">Evento finalizado</div>
+                                <?php elseif (!$esCliente): ?>
+                                    <div class="evento-info-message">Inicia sesión como cliente para comprar</div>
                                 <?php endif; ?>
                             </div>
-                            <?php if (strtotime($ev->fecha) > time() && $esCliente): ?>
-                                <form action="comprar_ticket.php" method="get">
-                                    <input type="hidden" name="evento_id" value="<?php echo $ev->id; ?>">
-                                    <button type="submit">Comprar tickets</button>
-                                </form>
-                            <?php elseif (strtotime($ev->fecha) <= time()): ?>
-                                <div class="evento-finalizado">Evento finalizado</div>
-                            <?php elseif (!$esCliente): ?>
-                                <div class="evento-info-message">Inicia sesión como cliente para comprar</div>
-                            <?php endif; ?>
-                        </li>
+                        </div>
                     <?php endforeach; ?>
-                    </ul>
+                    </div>
                 <?php else: ?>
-                    <p>No hay eventos para esta categoría.</p>
+                    <div class="no-eventos">
+                        <div class="no-eventos-icon"><i class="bi bi-calendar-x"></i></div>
+                        <p>No hay eventos para esta categoría.</p>
+                    </div>
                 <?php endif; ?>
             </div>
-        <?php endforeach; ?>    </div>
-    
-    <?php if ($esOrganizador): ?>
+        <?php endforeach; ?>
+    </div>
+      <?php if ($esOrganizador): ?>
         <a href="../view/crear_evento.php" class="create-event-btn">Crear nuevo evento</a>    <?php endif; ?>
+
+    <script>
+        // Función para animar los eventos al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            const eventos = document.querySelectorAll('.evento-card');
+            eventos.forEach((evento, index) => {
+                setTimeout(() => {
+                    evento.style.opacity = '1';
+                    evento.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+    </script>
 </body>
 </html>

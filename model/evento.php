@@ -31,8 +31,7 @@ class Evento{
         }
         return $categorias;
     }
-    
-    public static function getEventoDisponible($conn, $evento_id) {
+      public static function getEventoDisponible($conn, $evento_id) {
         $resEv = mysqli_query($conn, "SELECT * FROM Evento WHERE id = $evento_id AND fecha > NOW()");
         if ($rowEv = mysqli_fetch_assoc($resEv)) {
             $evento = new Evento();
@@ -44,10 +43,19 @@ class Evento{
             $evento->precio = $rowEv['precio'];
             $evento->cupo = $rowEv['cupo'];
             $evento->estado = $rowEv['estado'];
+            
+            // Obtener imagen del evento
+            $resImg = mysqli_query($conn, "SELECT url_imagen FROM EventoImagen WHERE evento_id = $evento_id LIMIT 1");
+            if ($imgRow = mysqli_fetch_assoc($resImg)) {
+                $evento->img = $imgRow['url_imagen'];
+            } else {
+                $evento->img = null;
+            }
+            
             return $evento;
         }
         return null;
-    }    public function crearEvento($conn, $titulo, $descripcion, $fecha, $lugar, $precio, $cupo, $estado, $organizador_id, $categoria_id) {
+    }public function crearEvento($conn, $titulo, $descripcion, $fecha, $lugar, $precio, $cupo, $estado, $organizador_id, $categoria_id) {
         $sql = "INSERT INTO Evento (titulo, descripcion, fecha, lugar, precio, cupo, estado, organizador_id, categoria_id) VALUES ('$titulo', '$descripcion', '$fecha', '$lugar', $precio, $cupo, '$estado', $organizador_id, $categoria_id)";
         if (mysqli_query($conn, $sql)) {
             $evento_id = mysqli_insert_id($conn);
@@ -96,6 +104,26 @@ class Evento{
         if (isset($row['estado'])) $evento->estado = $row['estado'];
         
         return $evento;
+    }
+    
+    /**
+     * Obtiene todas las imágenes asociadas a un evento
+     * @param mysqli $conn Conexión a la base de datos
+     * @param int $evento_id ID del evento
+     * @return array Array con las URLs de las imágenes
+     */
+    public static function obtenerImagenesEvento($conn, $evento_id) {
+        $imagenes = array();
+        $query = "SELECT url_imagen FROM EventoImagen WHERE evento_id = " . intval($evento_id);
+        $resultado = mysqli_query($conn, $query);
+        
+        if ($resultado && mysqli_num_rows($resultado) > 0) {
+            while ($fila = mysqli_fetch_assoc($resultado)) {
+                $imagenes[] = $fila['url_imagen'];
+            }
+        }
+        
+        return $imagenes;
     }
 }
 ?>

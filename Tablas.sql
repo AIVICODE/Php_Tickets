@@ -51,14 +51,6 @@ CREATE TABLE Evento (
     FOREIGN KEY (categoria_id) REFERENCES Categoria(id)
 );
 
--- Tabla para múltiples imágenes por evento
-CREATE TABLE EventoImagen (
-    id SERIAL PRIMARY KEY,
-    evento_id INT NOT NULL,
-    url_imagen VARCHAR(255) NOT NULL,
-    FOREIGN KEY (evento_id) REFERENCES Evento(id)
-);
-
 -- Tabla de Pagos
 CREATE TABLE Pago (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -80,5 +72,13 @@ CREATE TABLE Ticket (
     FOREIGN KEY (cliente_id) REFERENCES Cliente(id),
     FOREIGN KEY (evento_id) REFERENCES Evento(id),
     FOREIGN KEY (pago_id) REFERENCES Pago(id)
+);
+
+-- Tabla de Imágenes de Eventos
+CREATE TABLE EventoImagen (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    evento_id INT NOT NULL,
+    url_imagen VARCHAR(255) NOT NULL,
+    FOREIGN KEY (evento_id) REFERENCES Evento(id)
 );
 
