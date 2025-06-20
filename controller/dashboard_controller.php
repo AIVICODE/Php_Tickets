@@ -37,12 +37,21 @@ function buscarEventosPorTituloOCategoria($buscar) {
     // Para cada categoría encontrada, cargar sus eventos
     foreach ($categoriasBuscadas as $cat) {
         $catIdsIncluidos[] = $cat->id;
-        
-        // Cargar eventos para esta categoría
+          // Cargar eventos para esta categoría
         $resEv = mysqli_query($conn, "SELECT * FROM Evento WHERE categoria_id = " . intval($cat->id));
-        while ($rowEv = mysqli_fetch_assoc($resEv)) {
+        if ($resEv) {
+            while ($rowEv = mysqli_fetch_assoc($resEv)) {
             $ev = Evento::crearDesdeFilaBD($rowEv);
+            
+            // Obtener imagen del evento
+            $resImg = mysqli_query($conn, "SELECT url_imagen FROM EventoImagen WHERE evento_id = " . $ev->id . " LIMIT 1");
+            if ($imgRow = mysqli_fetch_assoc($resImg)) {
+                $ev->imagen_url = $imgRow['url_imagen'];
+            } else {
+                $ev->imagen_url = null;            }
+            
             $cat->eventos[] = $ev;
+            }
         }
         
         $categorias[] = $cat;

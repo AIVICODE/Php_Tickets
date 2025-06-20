@@ -6,6 +6,7 @@ require_once __DIR__ . '/../controller/login_controller.php';
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="icon" type="image/png" href="../stylesheets/images/favicon.png">
 </head>
 <body>
     <h2>Iniciar Sesión</h2>

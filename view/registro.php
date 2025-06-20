@@ -6,6 +6,7 @@ require_once __DIR__ . '/../controller/registro_controller.php';
 <head>
     <meta charset="UTF-8">
     <title>Registro de Usuario</title>
+    <link rel="icon" type="image/png" href="../stylesheets/images/favicon.png">
 </head>
 <body>
     <h2>Registro de Usuario</h2>

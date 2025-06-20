@@ -10,6 +10,7 @@ require_once __DIR__ . '/../controller/perfil_cliente_controller.php';
     <link rel="stylesheet" href="../stylesheets/dashboard/body.css">
     <link rel="stylesheet" href="../stylesheets/profile/profile.css?v=<?php echo time(); ?>">
     <script src="../stylesheets/js/profile.js?v=<?php echo time(); ?>"></script>
+    <link rel="icon" type="image/png" href="../stylesheets/images/favicon.png">
 </head>
 <body>    <header>
         <?php include __DIR__ . '/components/navbar.php'; ?>
@@ -73,15 +74,6 @@ require_once __DIR__ . '/../controller/perfil_cliente_controller.php';
             </form>
         </div>
     </div>
-    <h3>Eventos comprados</h3>
-    <?php if (count($eventos) > 0): ?>
-        <ul>
-        <?php foreach ($eventos as $ev): ?>
-            <li><?php echo htmlspecialchars($ev->titulo) . ' - ' . htmlspecialchars($ev->fecha) . ' - ' . htmlspecialchars($ev->lugar) . ' (Cantidad: ' . $ev->cantidad . ')'; ?></li>
-        <?php endforeach; ?>
-        </ul>    <?php else: ?>
-        <p>No has comprado entradas aún.</p>
-    <?php endif; ?>
     
     <div class="button-container">
         <a href="dashboard.php" class="back-link">Volver al dashboard</a>
